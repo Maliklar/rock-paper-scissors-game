@@ -1,7 +1,8 @@
 <template>
   <main class="main-view">
     <Header />
-    <Options />
+    <Options v-if="$store.state.stage == 0" />
+    <SelectionState v-else-if="$store.state.stage == 1" />
     <button @click="openRules">RULES</button>
     <Rules ref="rules" />
   </main>
@@ -11,9 +12,10 @@
 import Header from "./components/Header.vue";
 import Options from "./components/Options.vue";
 import Rules from "./components/Rules.vue";
+import SelectionState from "./components/SelectionState.vue";
 export default {
   name: "App",
-  components: { Header, Options, Rules },
+  components: { Header, Options, Rules, SelectionState },
   methods: {
     openRules() {
       this.$refs.rules.openRules();
@@ -26,10 +28,11 @@ export default {
 .main-view {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  height: 100vh;
   justify-content: space-around;
   gap: 48px;
-  padding: 52px 0px;
+  padding-top: 52px;
+  padding-bottom: 20px;
 }
 button {
   align-self: flex-end;

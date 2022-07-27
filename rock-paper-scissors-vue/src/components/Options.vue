@@ -1,97 +1,63 @@
 <template>
   <div class="options-view">
-    <div id="rock" class="choice-border">
-      <div class="choice-container">
-        <img src="../assets/images/icon-rock.svg" alt="" />
-      </div>
-    </div>
-    <div id="paper" class="choice-border">
-      <div class="choice-container">
-        <img src="../assets/images/icon-paper.svg" alt="" />
-      </div>
-    </div>
-    <div id="scissor" class="choice-border">
-      <div class="choice-container">
-        <img src="../assets/images/icon-scissors.svg" alt="" />
-      </div>
-    </div>
-    <div id="lizard" class="choice-border">
-      <div class="choice-container">
-        <img src="../assets/images/icon-lizard.svg" alt="" />
-      </div>
-    </div>
-    <div id="spock" class="choice-border">
-      <div class="choice-container">
-        <img src="../assets/images/icon-spock.svg" alt="" />
-      </div>
-    </div>
+    <PlayOption id="rock" :type="'rock'" />
+    <PlayOption id="paper" :type="'paper'" />
+    <PlayOption id="scissors" :type="'scissors'" />
+    <PlayOption id="lizard" :type="'lizard'" />
+    <PlayOption id="spock" :type="'spock'" />
   </div>
 </template>
 
-<script>
-export default {};
+<script scoped>
+import PlayOption from "./PlayOption.vue";
+
+export default {
+  components: { PlayOption },
+};
 </script>
 
-<style scoped>
+<style>
 .options-view {
   background: url("../assets/images/bg-pentagon.svg");
   background-repeat: no-repeat;
   background-position: center;
-  height: 464px;
-  width: 470px;
+  min-height: 464px;
+  min-width: 470px;
+  flex: 100%;
   align-self: center;
   position: relative;
 }
 
-.choice-border {
-  width: var(--choiceSize);
-  height: var(--choiceSize);
-  border-radius: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.options-view > .play-option {
   position: absolute;
+  height: 144px;
+  width: 144px;
 }
 
-.choice-container {
-  background-color: rgba(255, 255, 255, 0.774);
-  height: 75%;
-  width: 75%;
-  border-radius: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#scissor {
-  background-image: var(--ScissorsGradient);
-  left: 50%;
-  margin-left: calc(-1 * var(--choiceSize) / 2);
-}
-#paper {
-  background-image: var(--PaperGradient);
-  right: 0%;
-  top: 45%;
-  margin-top: calc(-1 * var(--choiceSize) / 2);
-}
-
-#rock {
-  background-image: var(--RockGradient);
+.options-view > #rock {
   right: 14%;
   bottom: 0%;
-  margin-top: calc(-1 * var(--choiceSize) / 2);
+  margin-top: calc(-1 * 144px / 2);
 }
 
-#lizard {
-  background-image: var(--LizardGradient);
+.options-view > #scissors {
+  left: 50%;
+  margin-left: calc(-1 * 144px / 2);
+}
+.options-view > #paper {
+  right: 0%;
+  top: 45%;
+  margin-top: calc(-1 * 144px / 2);
+}
+
+.options-view > #lizard {
   left: 14%;
   bottom: 0%;
-  margin-top: calc(-1 * var(--choiceSize) / 2);
+  margin-top: calc(-1 * 144px / 2);
 }
-#spock {
-  background-image: var(--Cyan);
+.options-view > #spock {
   left: 0%;
   top: 45%;
-  margin-top: calc(-1 * var(--choiceSize) / 2);
+  margin-top: calc(-1 * 144px / 2);
 }
 </style>
